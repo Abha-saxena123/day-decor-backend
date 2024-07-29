@@ -69,6 +69,44 @@
       "type": "date",
       "required": true,
       "unique": false
+    },
+    "banner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::banner.banner"
+    },
+    "address_books": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address-book.address-book",
+      "mappedBy": "user"
+    },
+    "saved_dates": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::saved-date.saved-date",
+      "inversedBy": "users"
+    },
+    "cart": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cart.cart",
+      "inversedBy": "user"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "wishList": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wish-list.wish-list",
+      "mappedBy": "user"
     }
   }
 }

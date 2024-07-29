@@ -14,6 +14,40 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  AddressBookFiltersInput: { // input type
+    addressLine?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    alternatePhoneNumber?: NexusGenInputs['IntFilterInput'] | null; // IntFilterInput
+    and?: Array<NexusGenInputs['AddressBookFiltersInput'] | null> | null; // [AddressBookFiltersInput]
+    city?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    country?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
+    name?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    not?: NexusGenInputs['AddressBookFiltersInput'] | null; // AddressBookFiltersInput
+    or?: Array<NexusGenInputs['AddressBookFiltersInput'] | null> | null; // [AddressBookFiltersInput]
+    phoneNumber?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    pincode?: NexusGenInputs['IntFilterInput'] | null; // IntFilterInput
+    publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    recipientEmail?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    state?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    tag?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    user?: NexusGenInputs['UsersPermissionsUserFiltersInput'] | null; // UsersPermissionsUserFiltersInput
+  }
+  AddressBookInput: { // input type
+    addressLine?: string | null; // String
+    alternatePhoneNumber?: number | null; // Int
+    city?: string | null; // String
+    country?: string | null; // String
+    name?: string | null; // String
+    phoneNumber?: string | null; // String
+    pincode?: number | null; // Int
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    recipientEmail?: string | null; // String
+    state?: string | null; // String
+    tag?: string | null; // String
+    user?: string | null; // ID
+  }
   BannerFiltersInput: { // input type
     and?: Array<NexusGenInputs['BannerFiltersInput'] | null> | null; // [BannerFiltersInput]
     createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
@@ -57,6 +91,24 @@ export interface NexusGenInputs {
     or?: Array<boolean | null> | null; // [Boolean]
     startsWith?: boolean | null; // Boolean
   }
+  CartFiltersInput: { // input type
+    added_at?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    and?: Array<NexusGenInputs['CartFiltersInput'] | null> | null; // [CartFiltersInput]
+    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
+    items?: NexusGenInputs['ComponentCartCartItemFiltersInput'] | null; // ComponentCartCartItemFiltersInput
+    not?: NexusGenInputs['CartFiltersInput'] | null; // CartFiltersInput
+    or?: Array<NexusGenInputs['CartFiltersInput'] | null> | null; // [CartFiltersInput]
+    publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    user?: NexusGenInputs['UsersPermissionsUserFiltersInput'] | null; // UsersPermissionsUserFiltersInput
+  }
+  CartInput: { // input type
+    added_at?: NexusGenScalars['DateTime'] | null; // DateTime
+    items?: Array<NexusGenInputs['ComponentCartCartItemInput'] | null> | null; // [ComponentCartCartItemInput]
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    user?: string | null; // ID
+  }
   CategoryFiltersInput: { // input type
     and?: Array<NexusGenInputs['CategoryFiltersInput'] | null> | null; // [CategoryFiltersInput]
     categories?: NexusGenInputs['CategoryFiltersInput'] | null; // CategoryFiltersInput
@@ -83,6 +135,18 @@ export interface NexusGenInputs {
     publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     tags?: Array<string | null> | null; // [ID]
     uid?: string | null; // String
+  }
+  ComponentCartCartItemFiltersInput: { // input type
+    and?: Array<NexusGenInputs['ComponentCartCartItemFiltersInput'] | null> | null; // [ComponentCartCartItemFiltersInput]
+    not?: NexusGenInputs['ComponentCartCartItemFiltersInput'] | null; // ComponentCartCartItemFiltersInput
+    or?: Array<NexusGenInputs['ComponentCartCartItemFiltersInput'] | null> | null; // [ComponentCartCartItemFiltersInput]
+    product?: NexusGenInputs['ProductFiltersInput'] | null; // ProductFiltersInput
+    quantity?: NexusGenInputs['IntFilterInput'] | null; // IntFilterInput
+  }
+  ComponentCartCartItemInput: { // input type
+    id?: string | null; // ID
+    product?: string | null; // ID
+    quantity?: number | null; // Int
   }
   ContentReleasesReleaseActionFiltersInput: { // input type
     and?: Array<NexusGenInputs['ContentReleasesReleaseActionFiltersInput'] | null> | null; // [ContentReleasesReleaseActionFiltersInput]
@@ -303,6 +367,48 @@ export interface NexusGenInputs {
     or?: Array<NexusGenScalars['Long'] | null> | null; // [Long]
     startsWith?: NexusGenScalars['Long'] | null; // Long
   }
+  OrderFiltersInput: { // input type
+    and?: Array<NexusGenInputs['OrderFiltersInput'] | null> | null; // [OrderFiltersInput]
+    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
+    not?: NexusGenInputs['OrderFiltersInput'] | null; // OrderFiltersInput
+    or?: Array<NexusGenInputs['OrderFiltersInput'] | null> | null; // [OrderFiltersInput]
+    orderItems?: NexusGenInputs['OrderItemFiltersInput'] | null; // OrderItemFiltersInput
+    order_id?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    paymentStatus?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    status?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    totalAmount?: NexusGenInputs['FloatFilterInput'] | null; // FloatFilterInput
+    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    user?: NexusGenInputs['UsersPermissionsUserFiltersInput'] | null; // UsersPermissionsUserFiltersInput
+  }
+  OrderInput: { // input type
+    orderItems?: Array<string | null> | null; // [ID]
+    order_id?: string | null; // String
+    paymentStatus?: NexusGenEnums['ENUM_ORDER_PAYMENTSTATUS'] | null; // ENUM_ORDER_PAYMENTSTATUS
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    status?: NexusGenEnums['ENUM_ORDER_STATUS'] | null; // ENUM_ORDER_STATUS
+    totalAmount?: number | null; // Float
+    user?: string | null; // ID
+  }
+  OrderItemFiltersInput: { // input type
+    and?: Array<NexusGenInputs['OrderItemFiltersInput'] | null> | null; // [OrderItemFiltersInput]
+    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
+    not?: NexusGenInputs['OrderItemFiltersInput'] | null; // OrderItemFiltersInput
+    or?: Array<NexusGenInputs['OrderItemFiltersInput'] | null> | null; // [OrderItemFiltersInput]
+    orders?: NexusGenInputs['OrderFiltersInput'] | null; // OrderFiltersInput
+    products?: NexusGenInputs['ProductFiltersInput'] | null; // ProductFiltersInput
+    publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    quantity?: NexusGenInputs['IntFilterInput'] | null; // IntFilterInput
+    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+  }
+  OrderItemInput: { // input type
+    orders?: Array<string | null> | null; // [ID]
+    products?: Array<string | null> | null; // [ID]
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    quantity?: number | null; // Int
+  }
   PaginationArg: { // input type
     limit?: number | null; // Int
     page?: number | null; // Int
@@ -311,7 +417,7 @@ export interface NexusGenInputs {
   }
   ProductFiltersInput: { // input type
     and?: Array<NexusGenInputs['ProductFiltersInput'] | null> | null; // [ProductFiltersInput]
-    category?: NexusGenInputs['CategoryFiltersInput'] | null; // CategoryFiltersInput
+    categories?: NexusGenInputs['CategoryFiltersInput'] | null; // CategoryFiltersInput
     createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
     description?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     discount?: NexusGenInputs['FloatFilterInput'] | null; // FloatFilterInput
@@ -319,21 +425,23 @@ export interface NexusGenInputs {
     mrp?: NexusGenInputs['FloatFilterInput'] | null; // FloatFilterInput
     not?: NexusGenInputs['ProductFiltersInput'] | null; // ProductFiltersInput
     or?: Array<NexusGenInputs['ProductFiltersInput'] | null> | null; // [ProductFiltersInput]
+    order_items?: NexusGenInputs['OrderItemFiltersInput'] | null; // OrderItemFiltersInput
     outOfStock?: NexusGenInputs['BooleanFilterInput'] | null; // BooleanFilterInput
     productInfo?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
     rating?: NexusGenInputs['FloatFilterInput'] | null; // FloatFilterInput
     slug?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
-    sp?: NexusGenInputs['FloatFilterInput'] | null; // FloatFilterInput
     tags?: NexusGenInputs['TagFiltersInput'] | null; // TagFiltersInput
     title?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    wish_lists?: NexusGenInputs['WishListFiltersInput'] | null; // WishListFiltersInput
   }
   ProductInput: { // input type
-    category?: string | null; // ID
+    categories?: Array<string | null> | null; // [ID]
     description?: string | null; // String
     discount?: number | null; // Float
     mrp?: number | null; // Float
+    order_items?: Array<string | null> | null; // [ID]
     otherImages?: Array<string | null> | null; // [ID]
     outOfStock?: boolean | null; // Boolean
     productImage?: Array<string | null> | null; // [ID]
@@ -341,9 +449,29 @@ export interface NexusGenInputs {
     publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     rating?: number | null; // Float
     slug?: string | null; // String
-    sp?: number | null; // Float
     tags?: Array<string | null> | null; // [ID]
     title?: string | null; // String
+    wish_lists?: Array<string | null> | null; // [ID]
+  }
+  SavedDateFiltersInput: { // input type
+    Name?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    and?: Array<NexusGenInputs['SavedDateFiltersInput'] | null> | null; // [SavedDateFiltersInput]
+    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
+    not?: NexusGenInputs['SavedDateFiltersInput'] | null; // SavedDateFiltersInput
+    occasion?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    occasionDate?: NexusGenInputs['DateFilterInput'] | null; // DateFilterInput
+    or?: Array<NexusGenInputs['SavedDateFiltersInput'] | null> | null; // [SavedDateFiltersInput]
+    publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    users?: NexusGenInputs['UsersPermissionsUserFiltersInput'] | null; // UsersPermissionsUserFiltersInput
+  }
+  SavedDateInput: { // input type
+    Name?: string | null; // String
+    occasion?: string | null; // String
+    occasionDate?: NexusGenScalars['Date'] | null; // Date
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    users?: Array<string | null> | null; // [ID]
   }
   ServiceAvailableAtFiltersInput: { // input type
     and?: Array<NexusGenInputs['ServiceAvailableAtFiltersInput'] | null> | null; // [ServiceAvailableAtFiltersInput]
@@ -404,20 +532,6 @@ export interface NexusGenInputs {
     products?: Array<string | null> | null; // [ID]
     publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     tagName?: string | null; // String
-  }
-  TessssssstFiltersInput: { // input type
-    and?: Array<NexusGenInputs['TessssssstFiltersInput'] | null> | null; // [TessssssstFiltersInput]
-    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
-    id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
-    not?: NexusGenInputs['TessssssstFiltersInput'] | null; // TessssssstFiltersInput
-    or?: Array<NexusGenInputs['TessssssstFiltersInput'] | null> | null; // [TessssssstFiltersInput]
-    publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
-    test?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
-    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
-  }
-  TessssssstInput: { // input type
-    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    test?: string | null; // String
   }
   TimeFilterInput: { // input type
     and?: Array<NexusGenScalars['Time'] | null> | null; // [Time]
@@ -552,39 +666,71 @@ export interface NexusGenInputs {
     users?: Array<string | null> | null; // [ID]
   }
   UsersPermissionsUserFiltersInput: { // input type
+    address_books?: NexusGenInputs['AddressBookFiltersInput'] | null; // AddressBookFiltersInput
     and?: Array<NexusGenInputs['UsersPermissionsUserFiltersInput'] | null> | null; // [UsersPermissionsUserFiltersInput]
+    banner?: NexusGenInputs['BannerFiltersInput'] | null; // BannerFiltersInput
     blocked?: NexusGenInputs['BooleanFilterInput'] | null; // BooleanFilterInput
+    cart?: NexusGenInputs['CartFiltersInput'] | null; // CartFiltersInput
     confirmationToken?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     confirmed?: NexusGenInputs['BooleanFilterInput'] | null; // BooleanFilterInput
     createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
     dateOfBirth?: NexusGenInputs['DateFilterInput'] | null; // DateFilterInput
     email?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
+    lastname?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     not?: NexusGenInputs['UsersPermissionsUserFiltersInput'] | null; // UsersPermissionsUserFiltersInput
     or?: Array<NexusGenInputs['UsersPermissionsUserFiltersInput'] | null> | null; // [UsersPermissionsUserFiltersInput]
+    orders?: NexusGenInputs['OrderFiltersInput'] | null; // OrderFiltersInput
     password?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     provider?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     resetPasswordToken?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
     role?: NexusGenInputs['UsersPermissionsRoleFiltersInput'] | null; // UsersPermissionsRoleFiltersInput
+    saved_dates?: NexusGenInputs['SavedDateFiltersInput'] | null; // SavedDateFiltersInput
     updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
     username?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
+    wishList?: NexusGenInputs['WishListFiltersInput'] | null; // WishListFiltersInput
   }
   UsersPermissionsUserInput: { // input type
+    address_books?: Array<string | null> | null; // [ID]
+    banner?: string | null; // ID
     blocked?: boolean | null; // Boolean
+    cart?: string | null; // ID
     confirmationToken?: string | null; // String
     confirmed?: boolean | null; // Boolean
     dateOfBirth?: NexusGenScalars['Date'] | null; // Date
     email?: string | null; // String
+    lastname?: string | null; // String
+    orders?: Array<string | null> | null; // [ID]
     password?: string | null; // String
     provider?: string | null; // String
     resetPasswordToken?: string | null; // String
     role?: string | null; // ID
+    saved_dates?: Array<string | null> | null; // [ID]
     username?: string | null; // String
+    wishList?: string | null; // ID
+  }
+  WishListFiltersInput: { // input type
+    and?: Array<NexusGenInputs['WishListFiltersInput'] | null> | null; // [WishListFiltersInput]
+    createdAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    id?: NexusGenInputs['IDFilterInput'] | null; // IDFilterInput
+    not?: NexusGenInputs['WishListFiltersInput'] | null; // WishListFiltersInput
+    or?: Array<NexusGenInputs['WishListFiltersInput'] | null> | null; // [WishListFiltersInput]
+    products?: NexusGenInputs['ProductFiltersInput'] | null; // ProductFiltersInput
+    publishedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    updatedAt?: NexusGenInputs['DateTimeFilterInput'] | null; // DateTimeFilterInput
+    user?: NexusGenInputs['UsersPermissionsUserFiltersInput'] | null; // UsersPermissionsUserFiltersInput
+  }
+  WishListInput: { // input type
+    products?: Array<string | null> | null; // [ID]
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    user?: string | null; // ID
   }
 }
 
 export interface NexusGenEnums {
   ENUM_CONTENTRELEASESRELEASEACTION_TYPE: "publish" | "unpublish"
+  ENUM_ORDER_PAYMENTSTATUS: "COD" | "Paid" | "Payment Failed"
+  ENUM_ORDER_STATUS: "Cancelled" | "Delivered" | "Out for Delivery" | "Paid" | "Pending" | "Shipped"
   PublicationState: "live" | "preview"
 }
 
@@ -604,6 +750,25 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  AddressBook: { // root type
+    addressLine: string; // String!
+    alternatePhoneNumber?: number | null; // Int
+    city: string; // String!
+    country: string; // String!
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    name: string; // String!
+    phoneNumber: string; // String!
+    pincode: number; // Int!
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    recipientEmail?: string | null; // String
+    state: string; // String!
+    tag?: string | null; // String
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  AddressBookEntity: {};
+  AddressBookEntityResponse: {};
+  AddressBookEntityResponseCollection: {};
+  AddressBookRelationResponseCollection: {};
   Banner: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     link?: string | null; // String
@@ -616,6 +781,16 @@ export interface NexusGenObjects {
   BannerEntityResponse: {};
   BannerEntityResponseCollection: {};
   BannerRelationResponseCollection: {};
+  Cart: { // root type
+    added_at: NexusGenScalars['DateTime']; // DateTime!
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  CartEntity: {};
+  CartEntityResponse: {};
+  CartEntityResponseCollection: {};
+  CartRelationResponseCollection: {};
   Category: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     metaData?: NexusGenScalars['JSON'] | null; // JSON
@@ -628,6 +803,10 @@ export interface NexusGenObjects {
   CategoryEntityResponse: {};
   CategoryEntityResponseCollection: {};
   CategoryRelationResponseCollection: {};
+  ComponentCartCartItem: { // root type
+    id: string; // ID!
+    quantity?: number | null; // Int
+  }
   ContentReleasesRelease: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     name: string; // String!
@@ -662,6 +841,29 @@ export interface NexusGenObjects {
   I18NLocaleEntityResponseCollection: {};
   I18NLocaleRelationResponseCollection: {};
   Mutation: {};
+  Order: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    order_id?: string | null; // String
+    paymentStatus?: NexusGenEnums['ENUM_ORDER_PAYMENTSTATUS'] | null; // ENUM_ORDER_PAYMENTSTATUS
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    status: NexusGenEnums['ENUM_ORDER_STATUS']; // ENUM_ORDER_STATUS!
+    totalAmount?: number | null; // Float
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  OrderEntity: {};
+  OrderEntityResponse: {};
+  OrderEntityResponseCollection: {};
+  OrderItem: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    quantity?: number | null; // Int
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  OrderItemEntity: {};
+  OrderItemEntityResponse: {};
+  OrderItemEntityResponseCollection: {};
+  OrderItemRelationResponseCollection: {};
+  OrderRelationResponseCollection: {};
   Pagination: { // root type
     page: number; // Int!
     pageCount: number; // Int!
@@ -678,7 +880,6 @@ export interface NexusGenObjects {
     publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     rating?: number | null; // Float
     slug: string; // String!
-    sp?: number | null; // Float
     title?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
@@ -688,6 +889,18 @@ export interface NexusGenObjects {
   ProductRelationResponseCollection: {};
   Query: {};
   ResponseCollectionMeta: {};
+  SavedDate: { // root type
+    Name?: string | null; // String
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    occasion?: string | null; // String
+    occasionDate?: NexusGenScalars['Date'] | null; // Date
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  SavedDateEntity: {};
+  SavedDateEntityResponse: {};
+  SavedDateEntityResponseCollection: {};
+  SavedDateRelationResponseCollection: {};
   ServiceAvailableAt: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     place?: string | null; // String
@@ -709,16 +922,6 @@ export interface NexusGenObjects {
   TagEntityResponse: {};
   TagEntityResponseCollection: {};
   TagRelationResponseCollection: {};
-  Tessssssst: { // root type
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    test?: string | null; // String
-    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-  }
-  TessssssstEntity: {};
-  TessssssstEntityResponse: {};
-  TessssssstEntityResponseCollection: {};
-  TessssssstRelationResponseCollection: {};
   UploadFile: { // root type
     alternativeText?: string | null; // String
     caption?: string | null; // String
@@ -808,6 +1011,7 @@ export interface NexusGenObjects {
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     dateOfBirth: NexusGenScalars['Date']; // Date!
     email: string; // String!
+    lastname?: string | null; // String
     provider?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     username: string; // String!
@@ -816,13 +1020,22 @@ export interface NexusGenObjects {
   UsersPermissionsUserEntityResponse: {};
   UsersPermissionsUserEntityResponseCollection: {};
   UsersPermissionsUserRelationResponseCollection: {};
+  WishList: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  WishListEntity: {};
+  WishListEntityResponse: {};
+  WishListEntityResponseCollection: {};
+  WishListRelationResponseCollection: {};
 }
 
 export interface NexusGenInterfaces {
 }
 
 export interface NexusGenUnions {
-  GenericMorph: NexusGenRootTypes['Banner'] | NexusGenRootTypes['Category'] | NexusGenRootTypes['ContentReleasesRelease'] | NexusGenRootTypes['ContentReleasesReleaseAction'] | NexusGenRootTypes['I18NLocale'] | NexusGenRootTypes['Product'] | NexusGenRootTypes['ServiceAvailableAt'] | NexusGenRootTypes['Tag'] | NexusGenRootTypes['Tessssssst'] | NexusGenRootTypes['UploadFile'] | NexusGenRootTypes['UploadFolder'] | NexusGenRootTypes['UsersPermissionsPermission'] | NexusGenRootTypes['UsersPermissionsRole'] | NexusGenRootTypes['UsersPermissionsUser'];
+  GenericMorph: NexusGenRootTypes['AddressBook'] | NexusGenRootTypes['Banner'] | NexusGenRootTypes['Cart'] | NexusGenRootTypes['Category'] | NexusGenRootTypes['ComponentCartCartItem'] | NexusGenRootTypes['ContentReleasesRelease'] | NexusGenRootTypes['ContentReleasesReleaseAction'] | NexusGenRootTypes['I18NLocale'] | NexusGenRootTypes['Order'] | NexusGenRootTypes['OrderItem'] | NexusGenRootTypes['Product'] | NexusGenRootTypes['SavedDate'] | NexusGenRootTypes['ServiceAvailableAt'] | NexusGenRootTypes['Tag'] | NexusGenRootTypes['UploadFile'] | NexusGenRootTypes['UploadFolder'] | NexusGenRootTypes['UsersPermissionsPermission'] | NexusGenRootTypes['UsersPermissionsRole'] | NexusGenRootTypes['UsersPermissionsUser'] | NexusGenRootTypes['WishList'];
 }
 
 export type NexusGenRootTypes = NexusGenObjects & NexusGenUnions
@@ -830,6 +1043,36 @@ export type NexusGenRootTypes = NexusGenObjects & NexusGenUnions
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
+  AddressBook: { // field return type
+    addressLine: string; // String!
+    alternatePhoneNumber: number | null; // Int
+    city: string; // String!
+    country: string; // String!
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    name: string; // String!
+    phoneNumber: string; // String!
+    pincode: number; // Int!
+    publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    recipientEmail: string | null; // String
+    state: string; // String!
+    tag: string | null; // String
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    user: NexusGenRootTypes['UsersPermissionsUserEntityResponse'] | null; // UsersPermissionsUserEntityResponse
+  }
+  AddressBookEntity: { // field return type
+    attributes: NexusGenRootTypes['AddressBook'] | null; // AddressBook
+    id: string | null; // ID
+  }
+  AddressBookEntityResponse: { // field return type
+    data: NexusGenRootTypes['AddressBookEntity'] | null; // AddressBookEntity
+  }
+  AddressBookEntityResponseCollection: { // field return type
+    data: NexusGenRootTypes['AddressBookEntity'][]; // [AddressBookEntity!]!
+    meta: NexusGenRootTypes['ResponseCollectionMeta']; // ResponseCollectionMeta!
+  }
+  AddressBookRelationResponseCollection: { // field return type
+    data: NexusGenRootTypes['AddressBookEntity'][]; // [AddressBookEntity!]!
+  }
   Banner: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     image: NexusGenRootTypes['UploadFileEntityResponse']; // UploadFileEntityResponse!
@@ -852,6 +1095,28 @@ export interface NexusGenFieldTypes {
   }
   BannerRelationResponseCollection: { // field return type
     data: NexusGenRootTypes['BannerEntity'][]; // [BannerEntity!]!
+  }
+  Cart: { // field return type
+    added_at: NexusGenScalars['DateTime']; // DateTime!
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    items: Array<NexusGenRootTypes['ComponentCartCartItem'] | null> | null; // [ComponentCartCartItem]
+    publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    user: NexusGenRootTypes['UsersPermissionsUserEntityResponse'] | null; // UsersPermissionsUserEntityResponse
+  }
+  CartEntity: { // field return type
+    attributes: NexusGenRootTypes['Cart'] | null; // Cart
+    id: string | null; // ID
+  }
+  CartEntityResponse: { // field return type
+    data: NexusGenRootTypes['CartEntity'] | null; // CartEntity
+  }
+  CartEntityResponseCollection: { // field return type
+    data: NexusGenRootTypes['CartEntity'][]; // [CartEntity!]!
+    meta: NexusGenRootTypes['ResponseCollectionMeta']; // ResponseCollectionMeta!
+  }
+  CartRelationResponseCollection: { // field return type
+    data: NexusGenRootTypes['CartEntity'][]; // [CartEntity!]!
   }
   Category: { // field return type
     categories: NexusGenRootTypes['CategoryRelationResponseCollection'] | null; // CategoryRelationResponseCollection
@@ -879,6 +1144,11 @@ export interface NexusGenFieldTypes {
   }
   CategoryRelationResponseCollection: { // field return type
     data: NexusGenRootTypes['CategoryEntity'][]; // [CategoryEntity!]!
+  }
+  ComponentCartCartItem: { // field return type
+    id: string; // ID!
+    product: NexusGenRootTypes['ProductEntityResponse'] | null; // ProductEntityResponse
+    quantity: number | null; // Int
   }
   ContentReleasesRelease: { // field return type
     actions: NexusGenRootTypes['ContentReleasesReleaseActionRelationResponseCollection'] | null; // ContentReleasesReleaseActionRelationResponseCollection
@@ -949,30 +1219,40 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     changePassword: NexusGenRootTypes['UsersPermissionsLoginPayload'] | null; // UsersPermissionsLoginPayload
+    createAddressBook: NexusGenRootTypes['AddressBookEntityResponse'] | null; // AddressBookEntityResponse
     createBanner: NexusGenRootTypes['BannerEntityResponse'] | null; // BannerEntityResponse
+    createCart: NexusGenRootTypes['CartEntityResponse'] | null; // CartEntityResponse
     createCategory: NexusGenRootTypes['CategoryEntityResponse'] | null; // CategoryEntityResponse
     createContentReleasesRelease: NexusGenRootTypes['ContentReleasesReleaseEntityResponse'] | null; // ContentReleasesReleaseEntityResponse
     createContentReleasesReleaseAction: NexusGenRootTypes['ContentReleasesReleaseActionEntityResponse'] | null; // ContentReleasesReleaseActionEntityResponse
+    createOrder: NexusGenRootTypes['OrderEntityResponse'] | null; // OrderEntityResponse
+    createOrderItem: NexusGenRootTypes['OrderItemEntityResponse'] | null; // OrderItemEntityResponse
     createProduct: NexusGenRootTypes['ProductEntityResponse'] | null; // ProductEntityResponse
+    createSavedDate: NexusGenRootTypes['SavedDateEntityResponse'] | null; // SavedDateEntityResponse
     createServiceAvailableAt: NexusGenRootTypes['ServiceAvailableAtEntityResponse'] | null; // ServiceAvailableAtEntityResponse
     createTag: NexusGenRootTypes['TagEntityResponse'] | null; // TagEntityResponse
-    createTessssssst: NexusGenRootTypes['TessssssstEntityResponse'] | null; // TessssssstEntityResponse
     createUploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     createUploadFolder: NexusGenRootTypes['UploadFolderEntityResponse'] | null; // UploadFolderEntityResponse
     createUsersPermissionsRole: NexusGenRootTypes['UsersPermissionsCreateRolePayload'] | null; // UsersPermissionsCreateRolePayload
     createUsersPermissionsUser: NexusGenRootTypes['UsersPermissionsUserEntityResponse']; // UsersPermissionsUserEntityResponse!
+    createWishList: NexusGenRootTypes['WishListEntityResponse'] | null; // WishListEntityResponse
+    deleteAddressBook: NexusGenRootTypes['AddressBookEntityResponse'] | null; // AddressBookEntityResponse
     deleteBanner: NexusGenRootTypes['BannerEntityResponse'] | null; // BannerEntityResponse
+    deleteCart: NexusGenRootTypes['CartEntityResponse'] | null; // CartEntityResponse
     deleteCategory: NexusGenRootTypes['CategoryEntityResponse'] | null; // CategoryEntityResponse
     deleteContentReleasesRelease: NexusGenRootTypes['ContentReleasesReleaseEntityResponse'] | null; // ContentReleasesReleaseEntityResponse
     deleteContentReleasesReleaseAction: NexusGenRootTypes['ContentReleasesReleaseActionEntityResponse'] | null; // ContentReleasesReleaseActionEntityResponse
+    deleteOrder: NexusGenRootTypes['OrderEntityResponse'] | null; // OrderEntityResponse
+    deleteOrderItem: NexusGenRootTypes['OrderItemEntityResponse'] | null; // OrderItemEntityResponse
     deleteProduct: NexusGenRootTypes['ProductEntityResponse'] | null; // ProductEntityResponse
+    deleteSavedDate: NexusGenRootTypes['SavedDateEntityResponse'] | null; // SavedDateEntityResponse
     deleteServiceAvailableAt: NexusGenRootTypes['ServiceAvailableAtEntityResponse'] | null; // ServiceAvailableAtEntityResponse
     deleteTag: NexusGenRootTypes['TagEntityResponse'] | null; // TagEntityResponse
-    deleteTessssssst: NexusGenRootTypes['TessssssstEntityResponse'] | null; // TessssssstEntityResponse
     deleteUploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     deleteUploadFolder: NexusGenRootTypes['UploadFolderEntityResponse'] | null; // UploadFolderEntityResponse
     deleteUsersPermissionsRole: NexusGenRootTypes['UsersPermissionsDeleteRolePayload'] | null; // UsersPermissionsDeleteRolePayload
     deleteUsersPermissionsUser: NexusGenRootTypes['UsersPermissionsUserEntityResponse']; // UsersPermissionsUserEntityResponse!
+    deleteWishList: NexusGenRootTypes['WishListEntityResponse'] | null; // WishListEntityResponse
     emailConfirmation: NexusGenRootTypes['UsersPermissionsLoginPayload'] | null; // UsersPermissionsLoginPayload
     forgotPassword: NexusGenRootTypes['UsersPermissionsPasswordPayload'] | null; // UsersPermissionsPasswordPayload
     login: NexusGenRootTypes['UsersPermissionsLoginPayload']; // UsersPermissionsLoginPayload!
@@ -980,20 +1260,72 @@ export interface NexusGenFieldTypes {
     register: NexusGenRootTypes['UsersPermissionsLoginPayload']; // UsersPermissionsLoginPayload!
     removeFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     resetPassword: NexusGenRootTypes['UsersPermissionsLoginPayload'] | null; // UsersPermissionsLoginPayload
+    updateAddressBook: NexusGenRootTypes['AddressBookEntityResponse'] | null; // AddressBookEntityResponse
     updateBanner: NexusGenRootTypes['BannerEntityResponse'] | null; // BannerEntityResponse
+    updateCart: NexusGenRootTypes['CartEntityResponse'] | null; // CartEntityResponse
     updateCategory: NexusGenRootTypes['CategoryEntityResponse'] | null; // CategoryEntityResponse
     updateContentReleasesRelease: NexusGenRootTypes['ContentReleasesReleaseEntityResponse'] | null; // ContentReleasesReleaseEntityResponse
     updateContentReleasesReleaseAction: NexusGenRootTypes['ContentReleasesReleaseActionEntityResponse'] | null; // ContentReleasesReleaseActionEntityResponse
     updateFileInfo: NexusGenRootTypes['UploadFileEntityResponse']; // UploadFileEntityResponse!
+    updateOrder: NexusGenRootTypes['OrderEntityResponse'] | null; // OrderEntityResponse
+    updateOrderItem: NexusGenRootTypes['OrderItemEntityResponse'] | null; // OrderItemEntityResponse
     updateProduct: NexusGenRootTypes['ProductEntityResponse'] | null; // ProductEntityResponse
+    updateSavedDate: NexusGenRootTypes['SavedDateEntityResponse'] | null; // SavedDateEntityResponse
     updateServiceAvailableAt: NexusGenRootTypes['ServiceAvailableAtEntityResponse'] | null; // ServiceAvailableAtEntityResponse
     updateTag: NexusGenRootTypes['TagEntityResponse'] | null; // TagEntityResponse
-    updateTessssssst: NexusGenRootTypes['TessssssstEntityResponse'] | null; // TessssssstEntityResponse
     updateUploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     updateUploadFolder: NexusGenRootTypes['UploadFolderEntityResponse'] | null; // UploadFolderEntityResponse
     updateUsersPermissionsRole: NexusGenRootTypes['UsersPermissionsUpdateRolePayload'] | null; // UsersPermissionsUpdateRolePayload
     updateUsersPermissionsUser: NexusGenRootTypes['UsersPermissionsUserEntityResponse']; // UsersPermissionsUserEntityResponse!
+    updateWishList: NexusGenRootTypes['WishListEntityResponse'] | null; // WishListEntityResponse
     upload: NexusGenRootTypes['UploadFileEntityResponse']; // UploadFileEntityResponse!
+  }
+  Order: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    orderItems: NexusGenRootTypes['OrderItemRelationResponseCollection'] | null; // OrderItemRelationResponseCollection
+    order_id: string | null; // String
+    paymentStatus: NexusGenEnums['ENUM_ORDER_PAYMENTSTATUS'] | null; // ENUM_ORDER_PAYMENTSTATUS
+    publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    status: NexusGenEnums['ENUM_ORDER_STATUS']; // ENUM_ORDER_STATUS!
+    totalAmount: number | null; // Float
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    user: NexusGenRootTypes['UsersPermissionsUserEntityResponse'] | null; // UsersPermissionsUserEntityResponse
+  }
+  OrderEntity: { // field return type
+    attributes: NexusGenRootTypes['Order'] | null; // Order
+    id: string | null; // ID
+  }
+  OrderEntityResponse: { // field return type
+    data: NexusGenRootTypes['OrderEntity'] | null; // OrderEntity
+  }
+  OrderEntityResponseCollection: { // field return type
+    data: NexusGenRootTypes['OrderEntity'][]; // [OrderEntity!]!
+    meta: NexusGenRootTypes['ResponseCollectionMeta']; // ResponseCollectionMeta!
+  }
+  OrderItem: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    orders: NexusGenRootTypes['OrderRelationResponseCollection'] | null; // OrderRelationResponseCollection
+    products: NexusGenRootTypes['ProductRelationResponseCollection'] | null; // ProductRelationResponseCollection
+    publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    quantity: number | null; // Int
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  OrderItemEntity: { // field return type
+    attributes: NexusGenRootTypes['OrderItem'] | null; // OrderItem
+    id: string | null; // ID
+  }
+  OrderItemEntityResponse: { // field return type
+    data: NexusGenRootTypes['OrderItemEntity'] | null; // OrderItemEntity
+  }
+  OrderItemEntityResponseCollection: { // field return type
+    data: NexusGenRootTypes['OrderItemEntity'][]; // [OrderItemEntity!]!
+    meta: NexusGenRootTypes['ResponseCollectionMeta']; // ResponseCollectionMeta!
+  }
+  OrderItemRelationResponseCollection: { // field return type
+    data: NexusGenRootTypes['OrderItemEntity'][]; // [OrderItemEntity!]!
+  }
+  OrderRelationResponseCollection: { // field return type
+    data: NexusGenRootTypes['OrderEntity'][]; // [OrderEntity!]!
   }
   Pagination: { // field return type
     page: number; // Int!
@@ -1002,11 +1334,12 @@ export interface NexusGenFieldTypes {
     total: number; // Int!
   }
   Product: { // field return type
-    category: NexusGenRootTypes['CategoryEntityResponse'] | null; // CategoryEntityResponse
+    categories: NexusGenRootTypes['CategoryRelationResponseCollection'] | null; // CategoryRelationResponseCollection
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     description: string; // String!
     discount: number | null; // Float
     mrp: number | null; // Float
+    order_items: NexusGenRootTypes['OrderItemRelationResponseCollection'] | null; // OrderItemRelationResponseCollection
     otherImages: NexusGenRootTypes['UploadFileRelationResponseCollection'] | null; // UploadFileRelationResponseCollection
     outOfStock: boolean; // Boolean!
     productImage: NexusGenRootTypes['UploadFileRelationResponseCollection']; // UploadFileRelationResponseCollection!
@@ -1014,10 +1347,10 @@ export interface NexusGenFieldTypes {
     publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
     rating: number | null; // Float
     slug: string; // String!
-    sp: number | null; // Float
     tags: NexusGenRootTypes['TagRelationResponseCollection'] | null; // TagRelationResponseCollection
     title: string | null; // String
     updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    wish_lists: NexusGenRootTypes['WishListRelationResponseCollection'] | null; // WishListRelationResponseCollection
   }
   ProductEntity: { // field return type
     attributes: NexusGenRootTypes['Product'] | null; // Product
@@ -1034,8 +1367,12 @@ export interface NexusGenFieldTypes {
     data: NexusGenRootTypes['ProductEntity'][]; // [ProductEntity!]!
   }
   Query: { // field return type
+    addressBook: NexusGenRootTypes['AddressBookEntityResponse'] | null; // AddressBookEntityResponse
+    addressBooks: NexusGenRootTypes['AddressBookEntityResponseCollection'] | null; // AddressBookEntityResponseCollection
     banner: NexusGenRootTypes['BannerEntityResponse'] | null; // BannerEntityResponse
     banners: NexusGenRootTypes['BannerEntityResponseCollection'] | null; // BannerEntityResponseCollection
+    cart: NexusGenRootTypes['CartEntityResponse'] | null; // CartEntityResponse
+    carts: NexusGenRootTypes['CartEntityResponseCollection'] | null; // CartEntityResponseCollection
     categories: NexusGenRootTypes['CategoryEntityResponseCollection'] | null; // CategoryEntityResponseCollection
     category: NexusGenRootTypes['CategoryEntityResponse'] | null; // CategoryEntityResponse
     contentReleasesRelease: NexusGenRootTypes['ContentReleasesReleaseEntityResponse'] | null; // ContentReleasesReleaseEntityResponse
@@ -1045,14 +1382,18 @@ export interface NexusGenFieldTypes {
     i18NLocale: NexusGenRootTypes['I18NLocaleEntityResponse'] | null; // I18NLocaleEntityResponse
     i18NLocales: NexusGenRootTypes['I18NLocaleEntityResponseCollection'] | null; // I18NLocaleEntityResponseCollection
     me: NexusGenRootTypes['UsersPermissionsMe'] | null; // UsersPermissionsMe
+    order: NexusGenRootTypes['OrderEntityResponse'] | null; // OrderEntityResponse
+    orderItem: NexusGenRootTypes['OrderItemEntityResponse'] | null; // OrderItemEntityResponse
+    orderItems: NexusGenRootTypes['OrderItemEntityResponseCollection'] | null; // OrderItemEntityResponseCollection
+    orders: NexusGenRootTypes['OrderEntityResponseCollection'] | null; // OrderEntityResponseCollection
     product: NexusGenRootTypes['ProductEntityResponse'] | null; // ProductEntityResponse
     products: NexusGenRootTypes['ProductEntityResponseCollection'] | null; // ProductEntityResponseCollection
+    savedDate: NexusGenRootTypes['SavedDateEntityResponse'] | null; // SavedDateEntityResponse
+    savedDates: NexusGenRootTypes['SavedDateEntityResponseCollection'] | null; // SavedDateEntityResponseCollection
     serviceAvailableAt: NexusGenRootTypes['ServiceAvailableAtEntityResponse'] | null; // ServiceAvailableAtEntityResponse
     serviceAvailableAts: NexusGenRootTypes['ServiceAvailableAtEntityResponseCollection'] | null; // ServiceAvailableAtEntityResponseCollection
     tag: NexusGenRootTypes['TagEntityResponse'] | null; // TagEntityResponse
     tags: NexusGenRootTypes['TagEntityResponseCollection'] | null; // TagEntityResponseCollection
-    tessssssst: NexusGenRootTypes['TessssssstEntityResponse'] | null; // TessssssstEntityResponse
-    tesssssssts: NexusGenRootTypes['TessssssstEntityResponseCollection'] | null; // TessssssstEntityResponseCollection
     uploadFile: NexusGenRootTypes['UploadFileEntityResponse'] | null; // UploadFileEntityResponse
     uploadFiles: NexusGenRootTypes['UploadFileEntityResponseCollection'] | null; // UploadFileEntityResponseCollection
     uploadFolder: NexusGenRootTypes['UploadFolderEntityResponse'] | null; // UploadFolderEntityResponse
@@ -1061,9 +1402,34 @@ export interface NexusGenFieldTypes {
     usersPermissionsRoles: NexusGenRootTypes['UsersPermissionsRoleEntityResponseCollection'] | null; // UsersPermissionsRoleEntityResponseCollection
     usersPermissionsUser: NexusGenRootTypes['UsersPermissionsUserEntityResponse'] | null; // UsersPermissionsUserEntityResponse
     usersPermissionsUsers: NexusGenRootTypes['UsersPermissionsUserEntityResponseCollection'] | null; // UsersPermissionsUserEntityResponseCollection
+    wishList: NexusGenRootTypes['WishListEntityResponse'] | null; // WishListEntityResponse
+    wishLists: NexusGenRootTypes['WishListEntityResponseCollection'] | null; // WishListEntityResponseCollection
   }
   ResponseCollectionMeta: { // field return type
     pagination: NexusGenRootTypes['Pagination']; // Pagination!
+  }
+  SavedDate: { // field return type
+    Name: string | null; // String
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    occasion: string | null; // String
+    occasionDate: NexusGenScalars['Date'] | null; // Date
+    publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    users: NexusGenRootTypes['UsersPermissionsUserRelationResponseCollection'] | null; // UsersPermissionsUserRelationResponseCollection
+  }
+  SavedDateEntity: { // field return type
+    attributes: NexusGenRootTypes['SavedDate'] | null; // SavedDate
+    id: string | null; // ID
+  }
+  SavedDateEntityResponse: { // field return type
+    data: NexusGenRootTypes['SavedDateEntity'] | null; // SavedDateEntity
+  }
+  SavedDateEntityResponseCollection: { // field return type
+    data: NexusGenRootTypes['SavedDateEntity'][]; // [SavedDateEntity!]!
+    meta: NexusGenRootTypes['ResponseCollectionMeta']; // ResponseCollectionMeta!
+  }
+  SavedDateRelationResponseCollection: { // field return type
+    data: NexusGenRootTypes['SavedDateEntity'][]; // [SavedDateEntity!]!
   }
   ServiceAvailableAt: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
@@ -1109,26 +1475,6 @@ export interface NexusGenFieldTypes {
   }
   TagRelationResponseCollection: { // field return type
     data: NexusGenRootTypes['TagEntity'][]; // [TagEntity!]!
-  }
-  Tessssssst: { // field return type
-    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
-    publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
-    test: string | null; // String
-    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
-  }
-  TessssssstEntity: { // field return type
-    attributes: NexusGenRootTypes['Tessssssst'] | null; // Tessssssst
-    id: string | null; // ID
-  }
-  TessssssstEntityResponse: { // field return type
-    data: NexusGenRootTypes['TessssssstEntity'] | null; // TessssssstEntity
-  }
-  TessssssstEntityResponseCollection: { // field return type
-    data: NexusGenRootTypes['TessssssstEntity'][]; // [TessssssstEntity!]!
-    meta: NexusGenRootTypes['ResponseCollectionMeta']; // ResponseCollectionMeta!
-  }
-  TessssssstRelationResponseCollection: { // field return type
-    data: NexusGenRootTypes['TessssssstEntity'][]; // [TessssssstEntity!]!
   }
   UploadFile: { // field return type
     alternativeText: string | null; // String
@@ -1261,15 +1607,22 @@ export interface NexusGenFieldTypes {
     ok: boolean; // Boolean!
   }
   UsersPermissionsUser: { // field return type
+    address_books: NexusGenRootTypes['AddressBookRelationResponseCollection'] | null; // AddressBookRelationResponseCollection
+    banner: NexusGenRootTypes['BannerEntityResponse'] | null; // BannerEntityResponse
     blocked: boolean | null; // Boolean
+    cart: NexusGenRootTypes['CartEntityResponse'] | null; // CartEntityResponse
     confirmed: boolean | null; // Boolean
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     dateOfBirth: NexusGenScalars['Date']; // Date!
     email: string; // String!
+    lastname: string | null; // String
+    orders: NexusGenRootTypes['OrderRelationResponseCollection'] | null; // OrderRelationResponseCollection
     provider: string | null; // String
     role: NexusGenRootTypes['UsersPermissionsRoleEntityResponse'] | null; // UsersPermissionsRoleEntityResponse
+    saved_dates: NexusGenRootTypes['SavedDateRelationResponseCollection'] | null; // SavedDateRelationResponseCollection
     updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
     username: string; // String!
+    wishList: NexusGenRootTypes['WishListEntityResponse'] | null; // WishListEntityResponse
   }
   UsersPermissionsUserEntity: { // field return type
     attributes: NexusGenRootTypes['UsersPermissionsUser'] | null; // UsersPermissionsUser
@@ -1285,9 +1638,60 @@ export interface NexusGenFieldTypes {
   UsersPermissionsUserRelationResponseCollection: { // field return type
     data: NexusGenRootTypes['UsersPermissionsUserEntity'][]; // [UsersPermissionsUserEntity!]!
   }
+  WishList: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    products: NexusGenRootTypes['ProductRelationResponseCollection'] | null; // ProductRelationResponseCollection
+    publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    user: NexusGenRootTypes['UsersPermissionsUserEntityResponse'] | null; // UsersPermissionsUserEntityResponse
+  }
+  WishListEntity: { // field return type
+    attributes: NexusGenRootTypes['WishList'] | null; // WishList
+    id: string | null; // ID
+  }
+  WishListEntityResponse: { // field return type
+    data: NexusGenRootTypes['WishListEntity'] | null; // WishListEntity
+  }
+  WishListEntityResponseCollection: { // field return type
+    data: NexusGenRootTypes['WishListEntity'][]; // [WishListEntity!]!
+    meta: NexusGenRootTypes['ResponseCollectionMeta']; // ResponseCollectionMeta!
+  }
+  WishListRelationResponseCollection: { // field return type
+    data: NexusGenRootTypes['WishListEntity'][]; // [WishListEntity!]!
+  }
 }
 
 export interface NexusGenFieldTypeNames {
+  AddressBook: { // field return type name
+    addressLine: 'String'
+    alternatePhoneNumber: 'Int'
+    city: 'String'
+    country: 'String'
+    createdAt: 'DateTime'
+    name: 'String'
+    phoneNumber: 'String'
+    pincode: 'Int'
+    publishedAt: 'DateTime'
+    recipientEmail: 'String'
+    state: 'String'
+    tag: 'String'
+    updatedAt: 'DateTime'
+    user: 'UsersPermissionsUserEntityResponse'
+  }
+  AddressBookEntity: { // field return type name
+    attributes: 'AddressBook'
+    id: 'ID'
+  }
+  AddressBookEntityResponse: { // field return type name
+    data: 'AddressBookEntity'
+  }
+  AddressBookEntityResponseCollection: { // field return type name
+    data: 'AddressBookEntity'
+    meta: 'ResponseCollectionMeta'
+  }
+  AddressBookRelationResponseCollection: { // field return type name
+    data: 'AddressBookEntity'
+  }
   Banner: { // field return type name
     createdAt: 'DateTime'
     image: 'UploadFileEntityResponse'
@@ -1310,6 +1714,28 @@ export interface NexusGenFieldTypeNames {
   }
   BannerRelationResponseCollection: { // field return type name
     data: 'BannerEntity'
+  }
+  Cart: { // field return type name
+    added_at: 'DateTime'
+    createdAt: 'DateTime'
+    items: 'ComponentCartCartItem'
+    publishedAt: 'DateTime'
+    updatedAt: 'DateTime'
+    user: 'UsersPermissionsUserEntityResponse'
+  }
+  CartEntity: { // field return type name
+    attributes: 'Cart'
+    id: 'ID'
+  }
+  CartEntityResponse: { // field return type name
+    data: 'CartEntity'
+  }
+  CartEntityResponseCollection: { // field return type name
+    data: 'CartEntity'
+    meta: 'ResponseCollectionMeta'
+  }
+  CartRelationResponseCollection: { // field return type name
+    data: 'CartEntity'
   }
   Category: { // field return type name
     categories: 'CategoryRelationResponseCollection'
@@ -1337,6 +1763,11 @@ export interface NexusGenFieldTypeNames {
   }
   CategoryRelationResponseCollection: { // field return type name
     data: 'CategoryEntity'
+  }
+  ComponentCartCartItem: { // field return type name
+    id: 'ID'
+    product: 'ProductEntityResponse'
+    quantity: 'Int'
   }
   ContentReleasesRelease: { // field return type name
     actions: 'ContentReleasesReleaseActionRelationResponseCollection'
@@ -1407,30 +1838,40 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: { // field return type name
     changePassword: 'UsersPermissionsLoginPayload'
+    createAddressBook: 'AddressBookEntityResponse'
     createBanner: 'BannerEntityResponse'
+    createCart: 'CartEntityResponse'
     createCategory: 'CategoryEntityResponse'
     createContentReleasesRelease: 'ContentReleasesReleaseEntityResponse'
     createContentReleasesReleaseAction: 'ContentReleasesReleaseActionEntityResponse'
+    createOrder: 'OrderEntityResponse'
+    createOrderItem: 'OrderItemEntityResponse'
     createProduct: 'ProductEntityResponse'
+    createSavedDate: 'SavedDateEntityResponse'
     createServiceAvailableAt: 'ServiceAvailableAtEntityResponse'
     createTag: 'TagEntityResponse'
-    createTessssssst: 'TessssssstEntityResponse'
     createUploadFile: 'UploadFileEntityResponse'
     createUploadFolder: 'UploadFolderEntityResponse'
     createUsersPermissionsRole: 'UsersPermissionsCreateRolePayload'
     createUsersPermissionsUser: 'UsersPermissionsUserEntityResponse'
+    createWishList: 'WishListEntityResponse'
+    deleteAddressBook: 'AddressBookEntityResponse'
     deleteBanner: 'BannerEntityResponse'
+    deleteCart: 'CartEntityResponse'
     deleteCategory: 'CategoryEntityResponse'
     deleteContentReleasesRelease: 'ContentReleasesReleaseEntityResponse'
     deleteContentReleasesReleaseAction: 'ContentReleasesReleaseActionEntityResponse'
+    deleteOrder: 'OrderEntityResponse'
+    deleteOrderItem: 'OrderItemEntityResponse'
     deleteProduct: 'ProductEntityResponse'
+    deleteSavedDate: 'SavedDateEntityResponse'
     deleteServiceAvailableAt: 'ServiceAvailableAtEntityResponse'
     deleteTag: 'TagEntityResponse'
-    deleteTessssssst: 'TessssssstEntityResponse'
     deleteUploadFile: 'UploadFileEntityResponse'
     deleteUploadFolder: 'UploadFolderEntityResponse'
     deleteUsersPermissionsRole: 'UsersPermissionsDeleteRolePayload'
     deleteUsersPermissionsUser: 'UsersPermissionsUserEntityResponse'
+    deleteWishList: 'WishListEntityResponse'
     emailConfirmation: 'UsersPermissionsLoginPayload'
     forgotPassword: 'UsersPermissionsPasswordPayload'
     login: 'UsersPermissionsLoginPayload'
@@ -1438,20 +1879,72 @@ export interface NexusGenFieldTypeNames {
     register: 'UsersPermissionsLoginPayload'
     removeFile: 'UploadFileEntityResponse'
     resetPassword: 'UsersPermissionsLoginPayload'
+    updateAddressBook: 'AddressBookEntityResponse'
     updateBanner: 'BannerEntityResponse'
+    updateCart: 'CartEntityResponse'
     updateCategory: 'CategoryEntityResponse'
     updateContentReleasesRelease: 'ContentReleasesReleaseEntityResponse'
     updateContentReleasesReleaseAction: 'ContentReleasesReleaseActionEntityResponse'
     updateFileInfo: 'UploadFileEntityResponse'
+    updateOrder: 'OrderEntityResponse'
+    updateOrderItem: 'OrderItemEntityResponse'
     updateProduct: 'ProductEntityResponse'
+    updateSavedDate: 'SavedDateEntityResponse'
     updateServiceAvailableAt: 'ServiceAvailableAtEntityResponse'
     updateTag: 'TagEntityResponse'
-    updateTessssssst: 'TessssssstEntityResponse'
     updateUploadFile: 'UploadFileEntityResponse'
     updateUploadFolder: 'UploadFolderEntityResponse'
     updateUsersPermissionsRole: 'UsersPermissionsUpdateRolePayload'
     updateUsersPermissionsUser: 'UsersPermissionsUserEntityResponse'
+    updateWishList: 'WishListEntityResponse'
     upload: 'UploadFileEntityResponse'
+  }
+  Order: { // field return type name
+    createdAt: 'DateTime'
+    orderItems: 'OrderItemRelationResponseCollection'
+    order_id: 'String'
+    paymentStatus: 'ENUM_ORDER_PAYMENTSTATUS'
+    publishedAt: 'DateTime'
+    status: 'ENUM_ORDER_STATUS'
+    totalAmount: 'Float'
+    updatedAt: 'DateTime'
+    user: 'UsersPermissionsUserEntityResponse'
+  }
+  OrderEntity: { // field return type name
+    attributes: 'Order'
+    id: 'ID'
+  }
+  OrderEntityResponse: { // field return type name
+    data: 'OrderEntity'
+  }
+  OrderEntityResponseCollection: { // field return type name
+    data: 'OrderEntity'
+    meta: 'ResponseCollectionMeta'
+  }
+  OrderItem: { // field return type name
+    createdAt: 'DateTime'
+    orders: 'OrderRelationResponseCollection'
+    products: 'ProductRelationResponseCollection'
+    publishedAt: 'DateTime'
+    quantity: 'Int'
+    updatedAt: 'DateTime'
+  }
+  OrderItemEntity: { // field return type name
+    attributes: 'OrderItem'
+    id: 'ID'
+  }
+  OrderItemEntityResponse: { // field return type name
+    data: 'OrderItemEntity'
+  }
+  OrderItemEntityResponseCollection: { // field return type name
+    data: 'OrderItemEntity'
+    meta: 'ResponseCollectionMeta'
+  }
+  OrderItemRelationResponseCollection: { // field return type name
+    data: 'OrderItemEntity'
+  }
+  OrderRelationResponseCollection: { // field return type name
+    data: 'OrderEntity'
   }
   Pagination: { // field return type name
     page: 'Int'
@@ -1460,11 +1953,12 @@ export interface NexusGenFieldTypeNames {
     total: 'Int'
   }
   Product: { // field return type name
-    category: 'CategoryEntityResponse'
+    categories: 'CategoryRelationResponseCollection'
     createdAt: 'DateTime'
     description: 'String'
     discount: 'Float'
     mrp: 'Float'
+    order_items: 'OrderItemRelationResponseCollection'
     otherImages: 'UploadFileRelationResponseCollection'
     outOfStock: 'Boolean'
     productImage: 'UploadFileRelationResponseCollection'
@@ -1472,10 +1966,10 @@ export interface NexusGenFieldTypeNames {
     publishedAt: 'DateTime'
     rating: 'Float'
     slug: 'String'
-    sp: 'Float'
     tags: 'TagRelationResponseCollection'
     title: 'String'
     updatedAt: 'DateTime'
+    wish_lists: 'WishListRelationResponseCollection'
   }
   ProductEntity: { // field return type name
     attributes: 'Product'
@@ -1492,8 +1986,12 @@ export interface NexusGenFieldTypeNames {
     data: 'ProductEntity'
   }
   Query: { // field return type name
+    addressBook: 'AddressBookEntityResponse'
+    addressBooks: 'AddressBookEntityResponseCollection'
     banner: 'BannerEntityResponse'
     banners: 'BannerEntityResponseCollection'
+    cart: 'CartEntityResponse'
+    carts: 'CartEntityResponseCollection'
     categories: 'CategoryEntityResponseCollection'
     category: 'CategoryEntityResponse'
     contentReleasesRelease: 'ContentReleasesReleaseEntityResponse'
@@ -1503,14 +2001,18 @@ export interface NexusGenFieldTypeNames {
     i18NLocale: 'I18NLocaleEntityResponse'
     i18NLocales: 'I18NLocaleEntityResponseCollection'
     me: 'UsersPermissionsMe'
+    order: 'OrderEntityResponse'
+    orderItem: 'OrderItemEntityResponse'
+    orderItems: 'OrderItemEntityResponseCollection'
+    orders: 'OrderEntityResponseCollection'
     product: 'ProductEntityResponse'
     products: 'ProductEntityResponseCollection'
+    savedDate: 'SavedDateEntityResponse'
+    savedDates: 'SavedDateEntityResponseCollection'
     serviceAvailableAt: 'ServiceAvailableAtEntityResponse'
     serviceAvailableAts: 'ServiceAvailableAtEntityResponseCollection'
     tag: 'TagEntityResponse'
     tags: 'TagEntityResponseCollection'
-    tessssssst: 'TessssssstEntityResponse'
-    tesssssssts: 'TessssssstEntityResponseCollection'
     uploadFile: 'UploadFileEntityResponse'
     uploadFiles: 'UploadFileEntityResponseCollection'
     uploadFolder: 'UploadFolderEntityResponse'
@@ -1519,9 +2021,34 @@ export interface NexusGenFieldTypeNames {
     usersPermissionsRoles: 'UsersPermissionsRoleEntityResponseCollection'
     usersPermissionsUser: 'UsersPermissionsUserEntityResponse'
     usersPermissionsUsers: 'UsersPermissionsUserEntityResponseCollection'
+    wishList: 'WishListEntityResponse'
+    wishLists: 'WishListEntityResponseCollection'
   }
   ResponseCollectionMeta: { // field return type name
     pagination: 'Pagination'
+  }
+  SavedDate: { // field return type name
+    Name: 'String'
+    createdAt: 'DateTime'
+    occasion: 'String'
+    occasionDate: 'Date'
+    publishedAt: 'DateTime'
+    updatedAt: 'DateTime'
+    users: 'UsersPermissionsUserRelationResponseCollection'
+  }
+  SavedDateEntity: { // field return type name
+    attributes: 'SavedDate'
+    id: 'ID'
+  }
+  SavedDateEntityResponse: { // field return type name
+    data: 'SavedDateEntity'
+  }
+  SavedDateEntityResponseCollection: { // field return type name
+    data: 'SavedDateEntity'
+    meta: 'ResponseCollectionMeta'
+  }
+  SavedDateRelationResponseCollection: { // field return type name
+    data: 'SavedDateEntity'
   }
   ServiceAvailableAt: { // field return type name
     createdAt: 'DateTime'
@@ -1567,26 +2094,6 @@ export interface NexusGenFieldTypeNames {
   }
   TagRelationResponseCollection: { // field return type name
     data: 'TagEntity'
-  }
-  Tessssssst: { // field return type name
-    createdAt: 'DateTime'
-    publishedAt: 'DateTime'
-    test: 'String'
-    updatedAt: 'DateTime'
-  }
-  TessssssstEntity: { // field return type name
-    attributes: 'Tessssssst'
-    id: 'ID'
-  }
-  TessssssstEntityResponse: { // field return type name
-    data: 'TessssssstEntity'
-  }
-  TessssssstEntityResponseCollection: { // field return type name
-    data: 'TessssssstEntity'
-    meta: 'ResponseCollectionMeta'
-  }
-  TessssssstRelationResponseCollection: { // field return type name
-    data: 'TessssssstEntity'
   }
   UploadFile: { // field return type name
     alternativeText: 'String'
@@ -1719,15 +2226,22 @@ export interface NexusGenFieldTypeNames {
     ok: 'Boolean'
   }
   UsersPermissionsUser: { // field return type name
+    address_books: 'AddressBookRelationResponseCollection'
+    banner: 'BannerEntityResponse'
     blocked: 'Boolean'
+    cart: 'CartEntityResponse'
     confirmed: 'Boolean'
     createdAt: 'DateTime'
     dateOfBirth: 'Date'
     email: 'String'
+    lastname: 'String'
+    orders: 'OrderRelationResponseCollection'
     provider: 'String'
     role: 'UsersPermissionsRoleEntityResponse'
+    saved_dates: 'SavedDateRelationResponseCollection'
     updatedAt: 'DateTime'
     username: 'String'
+    wishList: 'WishListEntityResponse'
   }
   UsersPermissionsUserEntity: { // field return type name
     attributes: 'UsersPermissionsUser'
@@ -1743,9 +2257,37 @@ export interface NexusGenFieldTypeNames {
   UsersPermissionsUserRelationResponseCollection: { // field return type name
     data: 'UsersPermissionsUserEntity'
   }
+  WishList: { // field return type name
+    createdAt: 'DateTime'
+    products: 'ProductRelationResponseCollection'
+    publishedAt: 'DateTime'
+    updatedAt: 'DateTime'
+    user: 'UsersPermissionsUserEntityResponse'
+  }
+  WishListEntity: { // field return type name
+    attributes: 'WishList'
+    id: 'ID'
+  }
+  WishListEntityResponse: { // field return type name
+    data: 'WishListEntity'
+  }
+  WishListEntityResponseCollection: { // field return type name
+    data: 'WishListEntity'
+    meta: 'ResponseCollectionMeta'
+  }
+  WishListRelationResponseCollection: { // field return type name
+    data: 'WishListEntity'
+  }
 }
 
 export interface NexusGenArgTypes {
+  Cart: {
+    items: { // args
+      filters?: NexusGenInputs['ComponentCartCartItemFiltersInput'] | null; // ComponentCartCartItemFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      sort: Array<string | null> | null; // [String]
+    }
+  }
   Category: {
     categories: { // args
       filters?: NexusGenInputs['CategoryFiltersInput'] | null; // CategoryFiltersInput
@@ -1779,8 +2321,14 @@ export interface NexusGenArgTypes {
       password: string; // String!
       passwordConfirmation: string; // String!
     }
+    createAddressBook: { // args
+      data: NexusGenInputs['AddressBookInput']; // AddressBookInput!
+    }
     createBanner: { // args
       data: NexusGenInputs['BannerInput']; // BannerInput!
+    }
+    createCart: { // args
+      data: NexusGenInputs['CartInput']; // CartInput!
     }
     createCategory: { // args
       data: NexusGenInputs['CategoryInput']; // CategoryInput!
@@ -1791,17 +2339,23 @@ export interface NexusGenArgTypes {
     createContentReleasesReleaseAction: { // args
       data: NexusGenInputs['ContentReleasesReleaseActionInput']; // ContentReleasesReleaseActionInput!
     }
+    createOrder: { // args
+      data: NexusGenInputs['OrderInput']; // OrderInput!
+    }
+    createOrderItem: { // args
+      data: NexusGenInputs['OrderItemInput']; // OrderItemInput!
+    }
     createProduct: { // args
       data: NexusGenInputs['ProductInput']; // ProductInput!
+    }
+    createSavedDate: { // args
+      data: NexusGenInputs['SavedDateInput']; // SavedDateInput!
     }
     createServiceAvailableAt: { // args
       data: NexusGenInputs['ServiceAvailableAtInput']; // ServiceAvailableAtInput!
     }
     createTag: { // args
       data: NexusGenInputs['TagInput']; // TagInput!
-    }
-    createTessssssst: { // args
-      data: NexusGenInputs['TessssssstInput']; // TessssssstInput!
     }
     createUploadFile: { // args
       data: NexusGenInputs['UploadFileInput']; // UploadFileInput!
@@ -1815,7 +2369,16 @@ export interface NexusGenArgTypes {
     createUsersPermissionsUser: { // args
       data: NexusGenInputs['UsersPermissionsUserInput']; // UsersPermissionsUserInput!
     }
+    createWishList: { // args
+      data: NexusGenInputs['WishListInput']; // WishListInput!
+    }
+    deleteAddressBook: { // args
+      id: string; // ID!
+    }
     deleteBanner: { // args
+      id: string; // ID!
+    }
+    deleteCart: { // args
       id: string; // ID!
     }
     deleteCategory: { // args
@@ -1827,16 +2390,22 @@ export interface NexusGenArgTypes {
     deleteContentReleasesReleaseAction: { // args
       id: string; // ID!
     }
+    deleteOrder: { // args
+      id: string; // ID!
+    }
+    deleteOrderItem: { // args
+      id: string; // ID!
+    }
     deleteProduct: { // args
+      id: string; // ID!
+    }
+    deleteSavedDate: { // args
       id: string; // ID!
     }
     deleteServiceAvailableAt: { // args
       id: string; // ID!
     }
     deleteTag: { // args
-      id: string; // ID!
-    }
-    deleteTessssssst: { // args
       id: string; // ID!
     }
     deleteUploadFile: { // args
@@ -1849,6 +2418,9 @@ export interface NexusGenArgTypes {
       id: string; // ID!
     }
     deleteUsersPermissionsUser: { // args
+      id: string; // ID!
+    }
+    deleteWishList: { // args
       id: string; // ID!
     }
     emailConfirmation: { // args
@@ -1877,8 +2449,16 @@ export interface NexusGenArgTypes {
       password: string; // String!
       passwordConfirmation: string; // String!
     }
+    updateAddressBook: { // args
+      data: NexusGenInputs['AddressBookInput']; // AddressBookInput!
+      id: string; // ID!
+    }
     updateBanner: { // args
       data: NexusGenInputs['BannerInput']; // BannerInput!
+      id: string; // ID!
+    }
+    updateCart: { // args
+      data: NexusGenInputs['CartInput']; // CartInput!
       id: string; // ID!
     }
     updateCategory: { // args
@@ -1897,8 +2477,20 @@ export interface NexusGenArgTypes {
       id: string; // ID!
       info?: NexusGenInputs['FileInfoInput'] | null; // FileInfoInput
     }
+    updateOrder: { // args
+      data: NexusGenInputs['OrderInput']; // OrderInput!
+      id: string; // ID!
+    }
+    updateOrderItem: { // args
+      data: NexusGenInputs['OrderItemInput']; // OrderItemInput!
+      id: string; // ID!
+    }
     updateProduct: { // args
       data: NexusGenInputs['ProductInput']; // ProductInput!
+      id: string; // ID!
+    }
+    updateSavedDate: { // args
+      data: NexusGenInputs['SavedDateInput']; // SavedDateInput!
       id: string; // ID!
     }
     updateServiceAvailableAt: { // args
@@ -1907,10 +2499,6 @@ export interface NexusGenArgTypes {
     }
     updateTag: { // args
       data: NexusGenInputs['TagInput']; // TagInput!
-      id: string; // ID!
-    }
-    updateTessssssst: { // args
-      data: NexusGenInputs['TessssssstInput']; // TessssssstInput!
       id: string; // ID!
     }
     updateUploadFile: { // args
@@ -1929,6 +2517,10 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['UsersPermissionsUserInput']; // UsersPermissionsUserInput!
       id: string; // ID!
     }
+    updateWishList: { // args
+      data: NexusGenInputs['WishListInput']; // WishListInput!
+      id: string; // ID!
+    }
     upload: { // args
       field?: string | null; // String
       file: NexusGenScalars['Upload']; // Upload!
@@ -1937,7 +2529,41 @@ export interface NexusGenArgTypes {
       refId?: string | null; // ID
     }
   }
+  Order: {
+    orderItems: { // args
+      filters?: NexusGenInputs['OrderItemFiltersInput'] | null; // OrderItemFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+  }
+  OrderItem: {
+    orders: { // args
+      filters?: NexusGenInputs['OrderFiltersInput'] | null; // OrderFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+    products: { // args
+      filters?: NexusGenInputs['ProductFiltersInput'] | null; // ProductFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+  }
   Product: {
+    categories: { // args
+      filters?: NexusGenInputs['CategoryFiltersInput'] | null; // CategoryFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+    order_items: { // args
+      filters?: NexusGenInputs['OrderItemFiltersInput'] | null; // OrderItemFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
     otherImages: { // args
       filters?: NexusGenInputs['UploadFileFiltersInput'] | null; // UploadFileFiltersInput
       pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
@@ -1954,13 +2580,37 @@ export interface NexusGenArgTypes {
       publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
       sort: Array<string | null> | null; // [String]
     }
+    wish_lists: { // args
+      filters?: NexusGenInputs['WishListFiltersInput'] | null; // WishListFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
   }
   Query: {
+    addressBook: { // args
+      id?: string | null; // ID
+    }
+    addressBooks: { // args
+      filters?: NexusGenInputs['AddressBookFiltersInput'] | null; // AddressBookFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
     banner: { // args
       id?: string | null; // ID
     }
     banners: { // args
       filters?: NexusGenInputs['BannerFiltersInput'] | null; // BannerFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+    cart: { // args
+      id?: string | null; // ID
+    }
+    carts: { // args
+      filters?: NexusGenInputs['CartFiltersInput'] | null; // CartFiltersInput
       pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
       publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
       sort: Array<string | null> | null; // [String]
@@ -1998,11 +2648,38 @@ export interface NexusGenArgTypes {
       pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
       sort: Array<string | null> | null; // [String]
     }
+    order: { // args
+      id?: string | null; // ID
+    }
+    orderItem: { // args
+      id?: string | null; // ID
+    }
+    orderItems: { // args
+      filters?: NexusGenInputs['OrderItemFiltersInput'] | null; // OrderItemFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+    orders: { // args
+      filters?: NexusGenInputs['OrderFiltersInput'] | null; // OrderFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
     product: { // args
       id?: string | null; // ID
     }
     products: { // args
       filters?: NexusGenInputs['ProductFiltersInput'] | null; // ProductFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+    savedDate: { // args
+      id?: string | null; // ID
+    }
+    savedDates: { // args
+      filters?: NexusGenInputs['SavedDateFiltersInput'] | null; // SavedDateFiltersInput
       pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
       publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
       sort: Array<string | null> | null; // [String]
@@ -2021,15 +2698,6 @@ export interface NexusGenArgTypes {
     }
     tags: { // args
       filters?: NexusGenInputs['TagFiltersInput'] | null; // TagFiltersInput
-      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
-      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
-      sort: Array<string | null> | null; // [String]
-    }
-    tessssssst: { // args
-      id?: string | null; // ID
-    }
-    tesssssssts: { // args
-      filters?: NexusGenInputs['TessssssstFiltersInput'] | null; // TessssssstFiltersInput
       pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
       publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
       sort: Array<string | null> | null; // [String]
@@ -2062,6 +2730,22 @@ export interface NexusGenArgTypes {
       id?: string | null; // ID
     }
     usersPermissionsUsers: { // args
+      filters?: NexusGenInputs['UsersPermissionsUserFiltersInput'] | null; // UsersPermissionsUserFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      sort: Array<string | null> | null; // [String]
+    }
+    wishList: { // args
+      id?: string | null; // ID
+    }
+    wishLists: { // args
+      filters?: NexusGenInputs['WishListFiltersInput'] | null; // WishListFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+  }
+  SavedDate: {
+    users: { // args
       filters?: NexusGenInputs['UsersPermissionsUserFiltersInput'] | null; // UsersPermissionsUserFiltersInput
       pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
       sort: Array<string | null> | null; // [String]
@@ -2105,10 +2789,38 @@ export interface NexusGenArgTypes {
       sort: Array<string | null> | null; // [String]
     }
   }
+  UsersPermissionsUser: {
+    address_books: { // args
+      filters?: NexusGenInputs['AddressBookFiltersInput'] | null; // AddressBookFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+    orders: { // args
+      filters?: NexusGenInputs['OrderFiltersInput'] | null; // OrderFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+    saved_dates: { // args
+      filters?: NexusGenInputs['SavedDateFiltersInput'] | null; // SavedDateFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+  }
+  WishList: {
+    products: { // args
+      filters?: NexusGenInputs['ProductFiltersInput'] | null; // ProductFiltersInput
+      pagination: NexusGenInputs['PaginationArg'] | null; // PaginationArg
+      publicationState: NexusGenEnums['PublicationState'] | null; // PublicationState
+      sort: Array<string | null> | null; // [String]
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
-  GenericMorph: "Banner" | "Category" | "ContentReleasesRelease" | "ContentReleasesReleaseAction" | "I18NLocale" | "Product" | "ServiceAvailableAt" | "Tag" | "Tessssssst" | "UploadFile" | "UploadFolder" | "UsersPermissionsPermission" | "UsersPermissionsRole" | "UsersPermissionsUser"
+  GenericMorph: "AddressBook" | "Banner" | "Cart" | "Category" | "ComponentCartCartItem" | "ContentReleasesRelease" | "ContentReleasesReleaseAction" | "I18NLocale" | "Order" | "OrderItem" | "Product" | "SavedDate" | "ServiceAvailableAt" | "Tag" | "UploadFile" | "UploadFolder" | "UsersPermissionsPermission" | "UsersPermissionsRole" | "UsersPermissionsUser" | "WishList"
 }
 
 export interface NexusGenTypeInterfaces {

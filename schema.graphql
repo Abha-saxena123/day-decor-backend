@@ -2,6 +2,77 @@
 ### Do not make changes to this file directly
 
 
+type AddressBook {
+  addressLine: String!
+  alternatePhoneNumber: Int
+  city: String!
+  country: String!
+  createdAt: DateTime
+  name: String!
+  phoneNumber: String!
+  pincode: Int!
+  publishedAt: DateTime
+  recipientEmail: String
+  state: String!
+  tag: String
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+}
+
+type AddressBookEntity {
+  attributes: AddressBook
+  id: ID
+}
+
+type AddressBookEntityResponse {
+  data: AddressBookEntity
+}
+
+type AddressBookEntityResponseCollection {
+  data: [AddressBookEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input AddressBookFiltersInput {
+  addressLine: StringFilterInput
+  alternatePhoneNumber: IntFilterInput
+  and: [AddressBookFiltersInput]
+  city: StringFilterInput
+  country: StringFilterInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: AddressBookFiltersInput
+  or: [AddressBookFiltersInput]
+  phoneNumber: StringFilterInput
+  pincode: IntFilterInput
+  publishedAt: DateTimeFilterInput
+  recipientEmail: StringFilterInput
+  state: StringFilterInput
+  tag: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+}
+
+input AddressBookInput {
+  addressLine: String
+  alternatePhoneNumber: Int
+  city: String
+  country: String
+  name: String
+  phoneNumber: String
+  pincode: Int
+  publishedAt: DateTime
+  recipientEmail: String
+  state: String
+  tag: String
+  user: ID
+}
+
+type AddressBookRelationResponseCollection {
+  data: [AddressBookEntity!]!
+}
+
 type Banner {
   createdAt: DateTime
   image: UploadFileEntityResponse!
@@ -76,6 +147,53 @@ input BooleanFilterInput {
   startsWith: Boolean
 }
 
+type Cart {
+  added_at: DateTime!
+  createdAt: DateTime
+  items(filters: ComponentCartCartItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentCartCartItem]
+  publishedAt: DateTime
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+}
+
+type CartEntity {
+  attributes: Cart
+  id: ID
+}
+
+type CartEntityResponse {
+  data: CartEntity
+}
+
+type CartEntityResponseCollection {
+  data: [CartEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CartFiltersInput {
+  added_at: DateTimeFilterInput
+  and: [CartFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  items: ComponentCartCartItemFiltersInput
+  not: CartFiltersInput
+  or: [CartFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+}
+
+input CartInput {
+  added_at: DateTime
+  items: [ComponentCartCartItemInput]
+  publishedAt: DateTime
+  user: ID
+}
+
+type CartRelationResponseCollection {
+  data: [CartEntity!]!
+}
+
 type Category {
   categories(filters: CategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CategoryRelationResponseCollection
   category: CategoryEntityResponse
@@ -135,6 +253,26 @@ input CategoryInput {
 
 type CategoryRelationResponseCollection {
   data: [CategoryEntity!]!
+}
+
+type ComponentCartCartItem {
+  id: ID!
+  product: ProductEntityResponse
+  quantity: Int
+}
+
+input ComponentCartCartItemFiltersInput {
+  and: [ComponentCartCartItemFiltersInput]
+  not: ComponentCartCartItemFiltersInput
+  or: [ComponentCartCartItemFiltersInput]
+  product: ProductFiltersInput
+  quantity: IntFilterInput
+}
+
+input ComponentCartCartItemInput {
+  id: ID
+  product: ID
+  quantity: Int
 }
 
 type ContentReleasesRelease {
@@ -291,6 +429,21 @@ enum ENUM_CONTENTRELEASESRELEASEACTION_TYPE {
   unpublish
 }
 
+enum ENUM_ORDER_PAYMENTSTATUS {
+  COD
+  Paid
+  Payment_Failed
+}
+
+enum ENUM_ORDER_STATUS {
+  Cancelled
+  Delivered
+  Out_for_Delivery
+  Paid
+  Pending
+  Shipped
+}
+
 type Error {
   code: String!
   message: String
@@ -327,7 +480,7 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = Banner | Category | ContentReleasesRelease | ContentReleasesReleaseAction | I18NLocale | Product | ServiceAvailableAt | Tag | Tessssssst | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AddressBook | Banner | Cart | Category | ComponentCartCartItem | ContentReleasesRelease | ContentReleasesReleaseAction | I18NLocale | Order | OrderItem | Product | SavedDate | ServiceAvailableAt | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | WishList
 
 type I18NLocale {
   code: String
@@ -486,14 +639,18 @@ input LongFilterInput {
 type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  createAddressBook(data: AddressBookInput!): AddressBookEntityResponse
   createBanner(data: BannerInput!): BannerEntityResponse
+  createCart(data: CartInput!): CartEntityResponse
   createCategory(data: CategoryInput!): CategoryEntityResponse
   createContentReleasesRelease(data: ContentReleasesReleaseInput!): ContentReleasesReleaseEntityResponse
   createContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!): ContentReleasesReleaseActionEntityResponse
+  createOrder(data: OrderInput!): OrderEntityResponse
+  createOrderItem(data: OrderItemInput!): OrderItemEntityResponse
   createProduct(data: ProductInput!): ProductEntityResponse
+  createSavedDate(data: SavedDateInput!): SavedDateEntityResponse
   createServiceAvailableAt(data: ServiceAvailableAtInput!): ServiceAvailableAtEntityResponse
   createTag(data: TagInput!): TagEntityResponse
-  createTessssssst(data: TessssssstInput!): TessssssstEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
 
@@ -502,14 +659,19 @@ type Mutation {
 
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  createWishList(data: WishListInput!): WishListEntityResponse
+  deleteAddressBook(id: ID!): AddressBookEntityResponse
   deleteBanner(id: ID!): BannerEntityResponse
+  deleteCart(id: ID!): CartEntityResponse
   deleteCategory(id: ID!): CategoryEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
+  deleteOrder(id: ID!): OrderEntityResponse
+  deleteOrderItem(id: ID!): OrderItemEntityResponse
   deleteProduct(id: ID!): ProductEntityResponse
+  deleteSavedDate(id: ID!): SavedDateEntityResponse
   deleteServiceAvailableAt(id: ID!): ServiceAvailableAtEntityResponse
   deleteTag(id: ID!): TagEntityResponse
-  deleteTessssssst(id: ID!): TessssssstEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -518,6 +680,7 @@ type Mutation {
 
   """Delete an existing user"""
   deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
+  deleteWishList(id: ID!): WishListEntityResponse
 
   """Confirm an email users email address"""
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
@@ -535,15 +698,19 @@ type Mutation {
   Reset user password. Confirm with a code (resetToken from forgotPassword)
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  updateAddressBook(data: AddressBookInput!, id: ID!): AddressBookEntityResponse
   updateBanner(data: BannerInput!, id: ID!): BannerEntityResponse
+  updateCart(data: CartInput!, id: ID!): CartEntityResponse
   updateCategory(data: CategoryInput!, id: ID!): CategoryEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  updateOrder(data: OrderInput!, id: ID!): OrderEntityResponse
+  updateOrderItem(data: OrderItemInput!, id: ID!): OrderItemEntityResponse
   updateProduct(data: ProductInput!, id: ID!): ProductEntityResponse
+  updateSavedDate(data: SavedDateInput!, id: ID!): SavedDateEntityResponse
   updateServiceAvailableAt(data: ServiceAvailableAtInput!, id: ID!): ServiceAvailableAtEntityResponse
   updateTag(data: TagInput!, id: ID!): TagEntityResponse
-  updateTessssssst(data: TessssssstInput!, id: ID!): TessssssstEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -552,7 +719,111 @@ type Mutation {
 
   """Update an existing user"""
   updateUsersPermissionsUser(data: UsersPermissionsUserInput!, id: ID!): UsersPermissionsUserEntityResponse!
+  updateWishList(data: WishListInput!, id: ID!): WishListEntityResponse
   upload(field: String, file: Upload!, info: FileInfoInput, ref: String, refId: ID): UploadFileEntityResponse!
+}
+
+type Order {
+  createdAt: DateTime
+  orderItems(filters: OrderItemFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrderItemRelationResponseCollection
+  order_id: String
+  paymentStatus: ENUM_ORDER_PAYMENTSTATUS
+  publishedAt: DateTime
+  status: ENUM_ORDER_STATUS!
+  totalAmount: Float
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+}
+
+type OrderEntity {
+  attributes: Order
+  id: ID
+}
+
+type OrderEntityResponse {
+  data: OrderEntity
+}
+
+type OrderEntityResponseCollection {
+  data: [OrderEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input OrderFiltersInput {
+  and: [OrderFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: OrderFiltersInput
+  or: [OrderFiltersInput]
+  orderItems: OrderItemFiltersInput
+  order_id: StringFilterInput
+  paymentStatus: StringFilterInput
+  publishedAt: DateTimeFilterInput
+  status: StringFilterInput
+  totalAmount: FloatFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+}
+
+input OrderInput {
+  orderItems: [ID]
+  order_id: String
+  paymentStatus: ENUM_ORDER_PAYMENTSTATUS
+  publishedAt: DateTime
+  status: ENUM_ORDER_STATUS
+  totalAmount: Float
+  user: ID
+}
+
+type OrderItem {
+  createdAt: DateTime
+  orders(filters: OrderFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrderRelationResponseCollection
+  products(filters: ProductFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ProductRelationResponseCollection
+  publishedAt: DateTime
+  quantity: Int
+  updatedAt: DateTime
+}
+
+type OrderItemEntity {
+  attributes: OrderItem
+  id: ID
+}
+
+type OrderItemEntityResponse {
+  data: OrderItemEntity
+}
+
+type OrderItemEntityResponseCollection {
+  data: [OrderItemEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input OrderItemFiltersInput {
+  and: [OrderItemFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: OrderItemFiltersInput
+  or: [OrderItemFiltersInput]
+  orders: OrderFiltersInput
+  products: ProductFiltersInput
+  publishedAt: DateTimeFilterInput
+  quantity: IntFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input OrderItemInput {
+  orders: [ID]
+  products: [ID]
+  publishedAt: DateTime
+  quantity: Int
+}
+
+type OrderItemRelationResponseCollection {
+  data: [OrderItemEntity!]!
+}
+
+type OrderRelationResponseCollection {
+  data: [OrderEntity!]!
 }
 
 type Pagination {
@@ -570,11 +841,12 @@ input PaginationArg {
 }
 
 type Product {
-  category: CategoryEntityResponse
+  categories(filters: CategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CategoryRelationResponseCollection
   createdAt: DateTime
   description: String!
   discount: Float
   mrp: Float
+  order_items(filters: OrderItemFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrderItemRelationResponseCollection
   otherImages(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   outOfStock: Boolean!
   productImage(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
@@ -582,10 +854,10 @@ type Product {
   publishedAt: DateTime
   rating: Float
   slug: String!
-  sp: Float
   tags(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagRelationResponseCollection
   title: String
   updatedAt: DateTime
+  wish_lists(filters: WishListFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): WishListRelationResponseCollection
 }
 
 type ProductEntity {
@@ -604,7 +876,7 @@ type ProductEntityResponseCollection {
 
 input ProductFiltersInput {
   and: [ProductFiltersInput]
-  category: CategoryFiltersInput
+  categories: CategoryFiltersInput
   createdAt: DateTimeFilterInput
   description: StringFilterInput
   discount: FloatFilterInput
@@ -612,22 +884,24 @@ input ProductFiltersInput {
   mrp: FloatFilterInput
   not: ProductFiltersInput
   or: [ProductFiltersInput]
+  order_items: OrderItemFiltersInput
   outOfStock: BooleanFilterInput
   productInfo: StringFilterInput
   publishedAt: DateTimeFilterInput
   rating: FloatFilterInput
   slug: StringFilterInput
-  sp: FloatFilterInput
   tags: TagFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
+  wish_lists: WishListFiltersInput
 }
 
 input ProductInput {
-  category: ID
+  categories: [ID]
   description: String
   discount: Float
   mrp: Float
+  order_items: [ID]
   otherImages: [ID]
   outOfStock: Boolean
   productImage: [ID]
@@ -635,9 +909,9 @@ input ProductInput {
   publishedAt: DateTime
   rating: Float
   slug: String
-  sp: Float
   tags: [ID]
   title: String
+  wish_lists: [ID]
 }
 
 type ProductRelationResponseCollection {
@@ -650,8 +924,12 @@ enum PublicationState {
 }
 
 type Query {
+  addressBook(id: ID): AddressBookEntityResponse
+  addressBooks(filters: AddressBookFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): AddressBookEntityResponseCollection
   banner(id: ID): BannerEntityResponse
   banners(filters: BannerFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BannerEntityResponseCollection
+  cart(id: ID): CartEntityResponse
+  carts(filters: CartFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CartEntityResponseCollection
   categories(filters: CategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CategoryEntityResponseCollection
   category(id: ID): CategoryEntityResponse
   contentReleasesRelease(id: ID): ContentReleasesReleaseEntityResponse
@@ -661,14 +939,18 @@ type Query {
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   me: UsersPermissionsMe
+  order(id: ID): OrderEntityResponse
+  orderItem(id: ID): OrderItemEntityResponse
+  orderItems(filters: OrderItemFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrderItemEntityResponseCollection
+  orders(filters: OrderFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrderEntityResponseCollection
   product(id: ID): ProductEntityResponse
   products(filters: ProductFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ProductEntityResponseCollection
+  savedDate(id: ID): SavedDateEntityResponse
+  savedDates(filters: SavedDateFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): SavedDateEntityResponseCollection
   serviceAvailableAt(id: ID): ServiceAvailableAtEntityResponse
   serviceAvailableAts(filters: ServiceAvailableAtFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ServiceAvailableAtEntityResponseCollection
   tag(id: ID): TagEntityResponse
   tags(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagEntityResponseCollection
-  tessssssst(id: ID): TessssssstEntityResponse
-  tesssssssts(filters: TessssssstFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TessssssstEntityResponseCollection
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse
@@ -677,10 +959,62 @@ type Query {
   usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
   usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
   usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  wishList(id: ID): WishListEntityResponse
+  wishLists(filters: WishListFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): WishListEntityResponseCollection
 }
 
 type ResponseCollectionMeta {
   pagination: Pagination!
+}
+
+type SavedDate {
+  Name: String
+  createdAt: DateTime
+  occasion: String
+  occasionDate: Date
+  publishedAt: DateTime
+  updatedAt: DateTime
+  users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
+}
+
+type SavedDateEntity {
+  attributes: SavedDate
+  id: ID
+}
+
+type SavedDateEntityResponse {
+  data: SavedDateEntity
+}
+
+type SavedDateEntityResponseCollection {
+  data: [SavedDateEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input SavedDateFiltersInput {
+  Name: StringFilterInput
+  and: [SavedDateFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: SavedDateFiltersInput
+  occasion: StringFilterInput
+  occasionDate: DateFilterInput
+  or: [SavedDateFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  users: UsersPermissionsUserFiltersInput
+}
+
+input SavedDateInput {
+  Name: String
+  occasion: String
+  occasionDate: Date
+  publishedAt: DateTime
+  users: [ID]
+}
+
+type SavedDateRelationResponseCollection {
+  data: [SavedDateEntity!]!
 }
 
 type ServiceAvailableAt {
@@ -801,47 +1135,6 @@ input TagInput {
 
 type TagRelationResponseCollection {
   data: [TagEntity!]!
-}
-
-type Tessssssst {
-  createdAt: DateTime
-  publishedAt: DateTime
-  test: String
-  updatedAt: DateTime
-}
-
-type TessssssstEntity {
-  attributes: Tessssssst
-  id: ID
-}
-
-type TessssssstEntityResponse {
-  data: TessssssstEntity
-}
-
-type TessssssstEntityResponseCollection {
-  data: [TessssssstEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input TessssssstFiltersInput {
-  and: [TessssssstFiltersInput]
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  not: TessssssstFiltersInput
-  or: [TessssssstFiltersInput]
-  publishedAt: DateTimeFilterInput
-  test: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input TessssssstInput {
-  publishedAt: DateTime
-  test: String
-}
-
-type TessssssstRelationResponseCollection {
-  data: [TessssssstEntity!]!
 }
 
 """A time string with format HH:mm:ss.SSS"""
@@ -1151,15 +1444,22 @@ type UsersPermissionsUpdateRolePayload {
 }
 
 type UsersPermissionsUser {
+  address_books(filters: AddressBookFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): AddressBookRelationResponseCollection
+  banner: BannerEntityResponse
   blocked: Boolean
+  cart: CartEntityResponse
   confirmed: Boolean
   createdAt: DateTime
   dateOfBirth: Date!
   email: String!
+  lastname: String
+  orders(filters: OrderFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrderRelationResponseCollection
   provider: String
   role: UsersPermissionsRoleEntityResponse
+  saved_dates(filters: SavedDateFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): SavedDateRelationResponseCollection
   updatedAt: DateTime
   username: String!
+  wishList: WishListEntityResponse
 }
 
 type UsersPermissionsUserEntity {
@@ -1177,37 +1477,95 @@ type UsersPermissionsUserEntityResponseCollection {
 }
 
 input UsersPermissionsUserFiltersInput {
+  address_books: AddressBookFiltersInput
   and: [UsersPermissionsUserFiltersInput]
+  banner: BannerFiltersInput
   blocked: BooleanFilterInput
+  cart: CartFiltersInput
   confirmationToken: StringFilterInput
   confirmed: BooleanFilterInput
   createdAt: DateTimeFilterInput
   dateOfBirth: DateFilterInput
   email: StringFilterInput
   id: IDFilterInput
+  lastname: StringFilterInput
   not: UsersPermissionsUserFiltersInput
   or: [UsersPermissionsUserFiltersInput]
+  orders: OrderFiltersInput
   password: StringFilterInput
   provider: StringFilterInput
   resetPasswordToken: StringFilterInput
   role: UsersPermissionsRoleFiltersInput
+  saved_dates: SavedDateFiltersInput
   updatedAt: DateTimeFilterInput
   username: StringFilterInput
+  wishList: WishListFiltersInput
 }
 
 input UsersPermissionsUserInput {
+  address_books: [ID]
+  banner: ID
   blocked: Boolean
+  cart: ID
   confirmationToken: String
   confirmed: Boolean
   dateOfBirth: Date
   email: String
+  lastname: String
+  orders: [ID]
   password: String
   provider: String
   resetPasswordToken: String
   role: ID
+  saved_dates: [ID]
   username: String
+  wishList: ID
 }
 
 type UsersPermissionsUserRelationResponseCollection {
   data: [UsersPermissionsUserEntity!]!
+}
+
+type WishList {
+  createdAt: DateTime
+  products(filters: ProductFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ProductRelationResponseCollection
+  publishedAt: DateTime
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+}
+
+type WishListEntity {
+  attributes: WishList
+  id: ID
+}
+
+type WishListEntityResponse {
+  data: WishListEntity
+}
+
+type WishListEntityResponseCollection {
+  data: [WishListEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input WishListFiltersInput {
+  and: [WishListFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: WishListFiltersInput
+  or: [WishListFiltersInput]
+  products: ProductFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+}
+
+input WishListInput {
+  products: [ID]
+  publishedAt: DateTime
+  user: ID
+}
+
+type WishListRelationResponseCollection {
+  data: [WishListEntity!]!
 }

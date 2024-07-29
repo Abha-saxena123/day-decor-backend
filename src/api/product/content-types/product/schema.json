@@ -19,9 +19,6 @@
     "mrp": {
       "type": "float"
     },
-    "sp": {
-      "type": "float"
-    },
     "discount": {
       "type": "decimal"
     },
@@ -60,9 +57,9 @@
         "videos"
       ]
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "products"
     },
@@ -73,6 +70,18 @@
     },
     "productInfo": {
       "type": "richtext"
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "products"
+    },
+    "wish_lists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::wish-list.wish-list",
+      "mappedBy": "products"
     }
   }
 }
